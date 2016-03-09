@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 String to = url.getText().toString();
                 if (!TextUtils.isEmpty(to)) {
-                    web.loadUrl(local);
+                    web.loadUrl(to);
                 }
             }
         });
@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                view.loadUrl("javascript:" + jsAction());
+                view.loadUrl("javascript:" + ajaxAction());
             }
         });
         web.setWebChromeClient(new WebChromeClient());
@@ -81,6 +81,38 @@ public class MainActivity extends Activity {
     private String jsAction() {
 
         String jsStr = "alert('hello')";
+
+        return jsStr;
+    }
+    private String ajaxAction() {
+
+        String jsStr = "var xmlhttp;" +
+                "var url=\"http://192.168.67.164/index.html\";" +
+                "function ajax_request(){" +
+                    "xmlhttp=new XMLHttpRequest();" +
+                    "xmlhttp.onreadystatechange = ajax_call_back;" +
+                    "xmlhttp.open(\"GET\",url,true);" +
+                    "xmlhttp.send();" +
+                "}" +
+                "function ajax_call_back(){" +
+                    "if (xmlhttp.readyState == 4) {" +
+                        "if (xmlhttp.status == 200) {" +
+                        "  var str = xmlhttp.responseText;" +
+                        "  alert(\"return data:\"+str);" +
+                        "}" +
+                        "else if(xmlhttp.status == 404){" +
+                        "  alert(\"res not exits\");" +
+                        "}" +
+                        "else {" +
+                        "  alert(\"Ajax request err,status:\"+xmlhttp.status);" +
+                        "}" +
+                    "}" +
+                    "else{" +
+                        "alert(\"state:\"+xmlhttp.readyState);" +
+                    "}" +
+                "}"+
+                "ajax_request();";
+
 
         return jsStr;
     }

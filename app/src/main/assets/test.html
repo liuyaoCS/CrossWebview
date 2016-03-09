@@ -4,13 +4,13 @@
 <script type="text/javascript">
 var xmlhttp;
 var url="http://127.0.0.1/index.html";
-var url2="http://192.168.65.27/index.html";
-var url1="http://www.chinaso.com";
-function loadXMLDoc()
+var url1="http://192.168.67.164/index.html";
+var url2="http://www.chinaso.com";
+function ajax_request()
 {
 	xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange = ajax_call_back;
-	xmlhttp.open("GET",url2,true);
+	xmlhttp.open("GET",url1,true);
 	xmlhttp.send();
 }
 function ajax_call_back()
@@ -36,8 +36,8 @@ function ajax_call_back()
 </head>
 <body>
 
-<div id="myDiv"><h3>Let AJAX change this text</h3></div>
-<button type="button" onclick="loadXMLDoc()">Change Content</button>
+<div id="myDiv"><h3>AJAX test</h3></div>
+<button type="button" onclick="ajax_request()">click</button>
 
 </body>
 </html>
