@@ -78,12 +78,7 @@ public class MainActivity extends Activity {
         });
         web.setWebChromeClient(new WebChromeClient());
     }
-    private String jsAction() {
 
-        String jsStr = "alert('hello')";
-
-        return jsStr;
-    }
     private String ajaxAction() {
 
         String jsStr = "var xmlhttp;" +

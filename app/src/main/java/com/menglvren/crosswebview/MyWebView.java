@@ -33,7 +33,7 @@ public class MyWebView extends WebView {
                 method.invoke(webviewcore, "https");
             }
             catch(Exception   e){
-                Log.e("ly", "enable crossdomain error");
+                Log.e("ly", "enable cross-domain error");
                 e.printStackTrace();
             }
         }else if(Build.VERSION.SDK_INT<Build.VERSION_CODES.KITKAT){
@@ -54,9 +54,11 @@ public class MyWebView extends WebView {
                 method.invoke(mWebViewCore, mNativeClass, "http");
                 method.invoke(mWebViewCore, mNativeClass, "https");
             } catch (Exception e) {
-                Log.e("ly", "enablecrossdomain error");
+                Log.e("ly", "enable cross-domain error");
                 e.printStackTrace();
             }
+        }else{
+
         }
 
     }
