@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 
     private final String ajax="file:///android_asset/ajax.html";
     private final String jsonp="file:///android_asset/jsonp.html";
+    private final String form="file:///android_asset/form.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MainActivity extends Activity {
         web= (MyWebView) findViewById(R.id.web);
 
 
-        url.setText(home);
+        url.setText(form);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +74,9 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                //view.loadUrl("javascript:" + ajaxAction());
-                view.loadUrl("javascript:" + jqueryInit());
-                view.loadUrl("javascript:" + jsonpAction());
+//                view.loadUrl("javascript:" + ajaxAction());
+//                view.loadUrl("javascript:" + jqueryInit());
+//                view.loadUrl("javascript:" + jsonpAction());
             }
         });
         web.setWebChromeClient(new WebChromeClient());
@@ -84,7 +85,7 @@ public class MainActivity extends Activity {
     private String ajaxAction() {
 
         String jsStr = "var xmlhttp;" +
-                "var url=\"http://192.168.64.55/server.php\";" +
+                "var url=\"http://192.168.64.55/server2.php\";" +
                 "function ajax_request(){" +
                     "xmlhttp=new XMLHttpRequest();" +
                     "xmlhttp.onreadystatechange = ajax_call_back;" +
