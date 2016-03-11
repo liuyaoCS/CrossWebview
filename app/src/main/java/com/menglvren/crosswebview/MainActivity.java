@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
     }
     private String jsonpAction() {
 
-        String jsStr = "$.getJSON(\"http://192.168.64.55/ajax.php?callback=?\",{" +
+        String jsStr = "$.getJSON(\"http://192.168.64.55/jsonp.php?callback=?\",{" +
                                     "foo: \"bar\"," +
                                     "format: \"json\"" +
                                     "},function(data) {" +
