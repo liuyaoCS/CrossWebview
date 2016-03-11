@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="http://code.jquery.com/jquery-1.5.js"></script>
+
+</head>
+
+<body>
+
+<div id="images"></div>
+
+<script>  
+  
+$.getJSON("http://192.168.64.55/ajax.php?callback=?",{
+    foo: "bar",  
+    format: "json"  
+  },function(data) {  
+      alert(data.format);  
+  });  
+  
+</script>
+
+</body>
+</html>  

@@ -5,16 +5,13 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public class MainActivity extends Activity {
     private EditText url;
@@ -22,7 +19,9 @@ public class MainActivity extends Activity {
     private MyWebView web;
 
     private final String home="https://wap.baidu.com/";
-    private final String local="file:///android_asset/test.html";
+
+    private final String ajax="file:///android_asset/ajax.html";
+    private final String jsonp="file:///android_asset/jsonp.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,7 @@ public class MainActivity extends Activity {
         web.getSettings().setDatabasePath(this.getCacheDir().getAbsolutePath());
         web.getSettings().setDomStorageEnabled(true);
         web.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             web.getSettings().setAllowUniversalAccessFromFileURLs(true);
         }
@@ -73,7 +73,9 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                view.loadUrl("javascript:" + ajaxAction());
+                //view.loadUrl("javascript:" + ajaxAction());
+                view.loadUrl("javascript:" + jqueryInit());
+                view.loadUrl("javascript:" + jsonpAction());
             }
         });
         web.setWebChromeClient(new WebChromeClient());
@@ -82,7 +84,7 @@ public class MainActivity extends Activity {
     private String ajaxAction() {
 
         String jsStr = "var xmlhttp;" +
-                "var url=\"http://192.168.67.164/index.html\";" +
+                "var url=\"http://192.168.64.55/server.php\";" +
                 "function ajax_request(){" +
                     "xmlhttp=new XMLHttpRequest();" +
                     "xmlhttp.onreadystatechange = ajax_call_back;" +
@@ -110,6 +112,23 @@ public class MainActivity extends Activity {
 
 
         return jsStr;
+    }
+    private String jsonpAction() {
+
+        String jsStr = "$.getJSON(\"http://192.168.64.55/ajax.php?callback=?\",{" +
+                                    "foo: \"bar\"," +
+                                    "format: \"json\"" +
+                                    "},function(data) {" +
+                                    "    alert(data.format);" +
+                                    "  });  ";
+
+        return jsStr;
+    }
+    private String jqueryInit(){
+        String js = "var newscript = document.createElement(\"script\");";
+        js += "newscript.src=\"http://code.jqueryInit.com/jqueryInit-1.5.js\";";
+        js += "document.head.appendChild(newscript);";
+        return js;
     }
 
 }
