@@ -24,6 +24,9 @@ public class MainActivity extends Activity {
     private final String jsonp="file:///android_asset/jsonp.html";
     private final String form="file:///android_asset/form.html";
 
+    private final String video="http://192.168.66.209/video.html";
+    private final String video2="http://192.168.69.25/video-plugin/demoX1.html";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,7 @@ public class MainActivity extends Activity {
         web= (MyWebView) findViewById(R.id.web);
 
 
-        url.setText(form);
+        url.setText(video2);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +58,7 @@ public class MainActivity extends Activity {
         web.getSettings().setDomStorageEnabled(true);
         web.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         web.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             web.getSettings().setAllowUniversalAccessFromFileURLs(true);
         }
@@ -79,13 +83,18 @@ public class MainActivity extends Activity {
 //                view.loadUrl("javascript:" + jsonpAction());
             }
         });
-        web.setWebChromeClient(new WebChromeClient());
+        web.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onShowCustomView(View view, CustomViewCallback callback) {
+                super.onShowCustomView(view, callback);
+            }
+        });
     }
 
     private String ajaxAction() {
 
         String jsStr = "var xmlhttp;" +
-                "var url=\"http://192.168.64.55/server2.php\";" +
+                "var url=\"http://192.168.66.209/server2.php\";" +
                 "function ajax_request(){" +
                     "xmlhttp=new XMLHttpRequest();" +
                     "xmlhttp.onreadystatechange = ajax_call_back;" +
