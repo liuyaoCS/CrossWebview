@@ -5,22 +5,37 @@
     android:layout_height="match_parent"
     tools:context="com.menglvren.crosswebview.MainActivity">
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/url"
-        android:hint="http://"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/search"
-        android:layout_alignParentRight="true"
-        android:text="search"/>
+        android:weightSum="8"
+        android:orientation="horizontal"
+        android:id="@+id/top">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:id="@+id/url"
+            android:hint="http://"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/back"
+            android:text="bk"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/search"
+            android:text="go"/>
+    </LinearLayout>
+
     <com.menglvren.crosswebview.MyWebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/web"
-        android:layout_below="@id/url">
+        android:layout_below="@id/top">
     </com.menglvren.crosswebview.MyWebView>
 </RelativeLayout>

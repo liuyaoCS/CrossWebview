@@ -1,0 +1,81 @@
+.feed_list_item_hook {
+	background: #69f !important;
+	position: relative !important;
+}
+
+.hook_panel {
+	display: none;
+	z-index: 1000;
+}
+.hook_panel_fold {
+	overflow: hidden;
+}
+
+.hook_panel_expander {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 20px;
+	line-height: 20px;
+	width: 50px;
+	text-align: center;
+}
+
+.feed_list_item_hook .hook_panel {
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 370px;
+	height: 20px;
+}
+
+.hook_panel_inner {
+	width: 100%;
+	height: 620px;
+	background: #9f6 !important;
+}
+.hook_panel_inner label {
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.hook_panel_inner select {
+	font-size: 16px !important;
+}
+.hook_submit_btn {
+	position: fixed;
+	display: block;
+	background: #f96;
+	z-index: 999999;
+	top: 10px;
+	left: 10px;
+	width: 100px;
+	height: 50px;
+	font-size: 30px !important;
+}
+.hook_tag_group {
+	padding: 5px 0 5px;
+	/*border-bottom: 1px dotted #000;*/
+}
+.hook_tag_group::after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+}
+
+.hook_tag {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #999;
+	padding: 5px;
+}
+.hook_tag_highlight {
+	background: #96f;
+}
+
+.hook_tag_selected {
+	background: #f00 !important;
+}
