@@ -58,7 +58,7 @@ public class MyWebView extends WebView {
                 e.printStackTrace();
             }
         }else{
-
+            Log.d("ly","not 4.* system,please enable cross main by others method,e.g. CORS");
         }
 
     }

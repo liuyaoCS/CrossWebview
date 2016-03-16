@@ -20,16 +20,11 @@ public class MainActivity extends Activity {
     private Button back;
     private MyWebView web;
 
-    private static final String INJECTION_TOKEN = "**injection**";
-
     private final String home="http://m.weibo.cn";
 
-    private final String ajax="file:///android_asset/ajax.html";
-    private final String jsonp="file:///android_asset/jsonp.html";
-    private final String form="file:///android_asset/form.html";
-
-    private final String video="http://192.168.66.209/video.html";
-    private final String video2="http://192.168.69.25/video-plugin/demoX1.html";
+    private final String ajax="file:///android_asset/test/ajax.html";
+    private final String jsonp="file:///android_asset/test/jsonp.html";
+    private final String form="file:///android_asset/test/form.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +54,7 @@ public class MainActivity extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(web.canGoBack()){
+                if (web.canGoBack()) {
                     web.goBack();
                 }
             }
@@ -78,24 +73,6 @@ public class MainActivity extends Activity {
         }
         web.enableCrossDomain();
         web.setWebViewClient(new WebViewClient() {
-            @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                WebResourceResponse response = super.shouldInterceptRequest(view, url);
-//                if(et_url != null && et_url.contains(INJECTION_TOKEN)) {
-//                    String assetPath = et_url.substring(et_url.indexOf(INJECTION_TOKEN) + INJECTION_TOKEN.length(), et_url.length());
-//                    try {
-//                        response = new WebResourceResponse(
-//                                "application/javascript",
-//                                "UTF8",
-//                                MainActivity.this.getAssets().open(assetPath)
-//                        );
-//                    } catch (IOException e) {
-//                        e.printStackTrace(); // Failed to load asset file
-//                    }
-//                }
-                return response;
-            }
-
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
@@ -120,12 +97,7 @@ public class MainActivity extends Activity {
 //                view.loadUrl("javascript:" + jsonpAction());
             }
         });
-        web.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onShowCustomView(View view, CustomViewCallback callback) {
-                super.onShowCustomView(view, callback);
-            }
-        });
+
         web.loadUrl(home);
     }
 
