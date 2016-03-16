@@ -140,15 +140,15 @@ public class MainActivity extends Activity {
         String js="var newlink = document.createElement(\"link\");";
         js +="newlink.setAttribute(\"rel\",\"stylesheet\");";
         js +="newlink.setAttribute(\"type\",\"text/css\");";
-        js +="newlink.setAttribute(\"href\",\"http://192.168.71.112/css/embed_mobile.css\");";
+        js +="newlink.setAttribute(\"href\",\"http://123.57.54.83:5000/static/embed_mobile.css\");";
         js += "document.head.appendChild(newlink);";
 
         js += "var newscript1 = document.createElement(\"script\");";
-        js += "newscript1.src=\"http://192.168.71.112/js/jquery.min.js\";";
+        js += "newscript1.src=\"http://123.57.54.83:5000/static/jquery.min.js\";";
         js += "document.head.appendChild(newscript1);";
 
         js += "var newscript = document.createElement(\"script\");";
-        js += "newscript.src=\"http://192.168.71.112/js/embed_mobile.js\";";
+        js += "newscript.src=\"http://123.57.54.83:5000/static/embed_mobile.js\";";
         js += "document.head.appendChild(newscript);";
         return js;
     }
